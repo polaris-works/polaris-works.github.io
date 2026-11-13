@@ -26,7 +26,20 @@
   .card p { margin:0; color:var(--muted); font-size:.95rem; }
   .star { color:var(--accent); margin-right:6px; }
   h2 { font-size:1.4rem; margin:0 0 8px; }
-  .apps { background:var(--panel); border:1px dashed var(--line); border-radius:16px; padding:28px; text-align:center; color:var(--muted); margin-bottom:64px; }
+  .apps { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin:24px 0 64px; }
+  .app { display:flex; flex-direction:column; gap:12px; }
+  .app-head { display:flex; align-items:center; gap:14px; }
+  .app-head img { width:56px; height:56px; border-radius:14px; flex:none; }
+  .app-head h3 { margin:0; }
+  .badge { display:inline-block; font-size:.75rem; font-weight:600; letter-spacing:.03em; padding:2px 10px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .badge.live { color:var(--accent); border-color:var(--accent); }
+  .app p { flex:1; }
+  .links { display:flex; flex-wrap:wrap; gap:10px; }
+  .btn { display:inline-block; padding:8px 14px; border-radius:10px; font-size:.9rem; font-weight:600; text-decoration:none; border:1px solid var(--accent); color:var(--accent); }
+  .btn.primary { background:var(--accent); color:var(--bg); }
+  .btn:hover { filter:brightness(1.15); }
+  .app.soon { opacity:.55; }
+  .app.soon img { filter:grayscale(1); }
   footer { border-top:1px solid var(--line); padding:28px 0 40px; color:var(--muted); font-size:.9rem; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; }
   footer a { color:var(--muted); }
 </style>
@@ -52,7 +65,34 @@
 
   <section id="apps">
     <h2>Apps</h2>
-    <div class="apps">Our first app is on its way to Google Play. Check back soon.</div>
+    <div class="apps">
+      <article class="card app">
+        <div class="app-head">
+          <img src="img/bodega.png" alt="Bodega icon">
+          <div><h3>Bodega</h3><span class="badge live">Available</span></div>
+        </div>
+        <p>Shopping list and meal planner with recipes, weekly menus, and shop-based organisation.</p>
+        <div class="links">
+          <!-- Bodega web URL: the only place it appears. Domain rename target: https://bodega.polarisworks.duckdns.org/ -->
+          <a class="btn primary" href="https://bodega.artisandevs.duckdns.org/">Open web app</a>
+          <a class="btn" href="https://github.com/polaris-works/shopping-list/releases/latest">Download APK</a>
+        </div>
+      </article>
+      <article class="card app soon" aria-disabled="true">
+        <div class="app-head">
+          <img src="img/attire.png" alt="Attire icon">
+          <div><h3>Attire</h3><span class="badge">Coming soon</span></div>
+        </div>
+        <p>Wardrobe organiser that creates colour-coordinated outfits using Sanzo Wada's colour combinations.</p>
+      </article>
+      <article class="card app soon" aria-disabled="true">
+        <div class="app-head">
+          <img src="img/spinach.png" alt="Spinach icon">
+          <div><h3>Spinach</h3><span class="badge">Coming soon</span></div>
+        </div>
+        <p>Track the restaurants and dishes you like, filter them by price or distance, and spin a roulette to choose what to eat.</p>
+      </article>
+    </div>
   </section>
 
   <footer>
